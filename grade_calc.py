@@ -1,13 +1,12 @@
 import customtkinter as ctk
-import json
-from tkinter import filedialog, messagebox
+
 
 
 class MainMenu(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.language = "繁體中文"
+        self.language = "English"
         self.gpa_scale = "12"
         self.cgpa_rows = []
         self.component_rows = []
@@ -159,11 +158,12 @@ class MainMenu(ctk.CTk):
 
         if self.cgpa_data:
             for row_data in self.cgpa_data:
-                self.add_cgpa_row(default_name=row_data.get("name", ""), default_grade=row_data.get("grade", "A"))
+                self.add_cgpa_row(default_name=row_data.get("name", ""), default_grade=row_data.get("grade", "A"), calculate=False)
+            self.calculate_cgpa()
         else:
             self.add_cgpa_row()
 
-    def add_cgpa_row(self, default_name="", default_grade="A"):
+    def add_cgpa_row(self, default_name="", default_grade="A", calculate=True):
         row_frame = ctk.CTkFrame(self.cgpa_scroll, fg_color="transparent")
         row_frame.pack(fill="x", pady=5)
 
@@ -199,7 +199,8 @@ class MainMenu(ctk.CTk):
             "grade": grade_menu
         })
 
-        self.calculate_cgpa()
+        if calculate:
+            self.calculate_cgpa()
 
     # 刪一欄
     def delete_cgpa_row(self, frame):
@@ -311,12 +312,13 @@ class MainMenu(ctk.CTk):
 
         self.target_entry.bind("<KeyRelease>", lambda e: self.calculate_course())
 
-        self.add_component_row("Assignment", "10")
-        self.add_component_row("Quiz", "10")
-        self.add_component_row("Midterm", "30")
-        self.add_component_row("Final", "50", "")
+        self.add_component_row("Assignment", "10", calculate=False)
+        self.add_component_row("Quiz", "10", calculate=False)
+        self.add_component_row("Midterm", "30", calculate=False)
+        self.add_component_row("Final", "50", "", calculate=False)
+        self.calculate_course()
 
-    def add_component_row(self, default_name="", default_weight="", default_score=""):
+    def add_component_row(self, default_name="", default_weight="", default_score="", calculate=True):
         row_frame = ctk.CTkFrame(self.component_scroll, fg_color="transparent")
         row_frame.pack(fill="x", pady=5)
 
@@ -358,7 +360,8 @@ class MainMenu(ctk.CTk):
         score_entry.bind("<KeyRelease>", lambda e: self.calculate_course())
         name_entry.bind("<KeyRelease>", lambda e: self.calculate_course())
 
-        self.calculate_course()
+        if calculate:
+            self.calculate_course()
 
     def delete_component_row(self, frame):
         self.component_rows = [row for row in self.component_rows if row["frame"] != frame]
@@ -494,6 +497,9 @@ class MainMenu(ctk.CTk):
                     pass
 
     def save_file(self):
+        import json
+        from tkinter import filedialog, messagebox
+        
         self.sync_data_to_memory()
         filepath = filedialog.asksaveasfilename(
             defaultextension=".json",
@@ -515,6 +521,9 @@ class MainMenu(ctk.CTk):
             messagebox.showerror(self.t("error"), str(e))
 
     def load_file(self):
+        import json
+        from tkinter import filedialog, messagebox
+        
         filepath = filedialog.askopenfilename(
             filetypes=[("JSON files", "*.json"), ("All files", "*.*")]
         )
