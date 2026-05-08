@@ -1,0 +1,94 @@
+{
+    "language": "繁體中文",
+    "gpa_scale": "Both",
+    "cgpa_data": [
+        {
+            "name": "COMMERCE 1AA3",
+            "grade": "B+"
+        },
+        {
+            "name": "ECON 1B03",
+            "grade": "A"
+        },
+        {
+            "name": "MATH 1B03",
+            "grade": "B"
+        },
+        {
+            "name": "MATH 1MP3",
+            "grade": "A"
+        },
+        {
+            "name": "MATH 1X03",
+            "grade": "B"
+        },
+        {
+            "name": "COMPSCI 1DM3",
+            "grade": "C"
+        },
+        {
+            "name": "COMPSCI 1JC3",
+            "grade": "A"
+        },
+        {
+            "name": "COMPSCI 1XC3",
+            "grade": "C-"
+        },
+        {
+            "name": "MATH 1C03",
+            "grade": "A-"
+        },
+        {
+            "name": "MATH 1XX3",
+            "grade": "A-"
+        },
+        {
+            "name": "MATH 2X03",
+            "grade": "A+"
+        },
+        {
+            "name": "SUSTAIN 1S03",
+            "grade": "A"
+        },
+        {
+            "name": "COMPSCI 2C03",
+            "grade": "B+"
+        },
+        {
+            "name": "COMPSCI 2LC3",
+            "grade": "C"
+        },
+        {
+            "name": "COMPSCI 2ME3",
+            "grade": "B+"
+        },
+        {
+            "name": "MUSIC 2MT3",
+            "grade": "A+"
+        },
+        {
+            "name": "COMPSCI 2AC3",
+            "grade": "A-"
+        },
+        {
+            "name": "COMPSCI 2SD3",
+            "grade": "D"
+        },
+        {
+            "name": "JAPANESE 1Z06A",
+            "grade": "A+"
+        },
+        {
+            "name": "JAPANESE 1Z06B",
+            "grade": "A+"
+        },
+        {
+            "name": "MATH 2C03",
+            "grade": "A-"
+        },
+        {
+            "name": "MATH 2LA3",
+            "grade": "A-"
+        }
+    ]
+}
